@@ -10,23 +10,34 @@
     display: none;
 }
 
+/* display grid */
+body {
+    display: grid;
+}
+
+/* number of rows */
+body {
+    grid-template-rows: auto minmax(100%, 100dvh) auto;
+}
+
+
 /* logo */
-.navbar{
+.navbar {
     background-color: rgb(100, 203, 177);
 
-    & img[alt="logo"]{
+    & img[alt="logo"] {
         width: 5rem;
     }
 }
 
 /* All images */
-    img{
-        aspect-ratio: 1;
-        object-fit: cover;
-        object-position: center;
-    }
+img {
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+}
 
-    /* text align center */
-    :is(h2){
-        text-align: center;
-    }
+/* text align center */
+:is(h2, footer p) {
+    text-align: center;
+}
