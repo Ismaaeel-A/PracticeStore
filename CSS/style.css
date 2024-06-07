@@ -18,12 +18,13 @@ body {
 /* number of rows */
 body {
     grid-template-rows: auto minmax(100%, 100dvh) auto;
+    background-color: rgb(219, 219, 219);
 }
 
 
 /* logo */
 .navbar {
-    background-color: rgb(100, 203, 177);
+    background-color: rgb(56, 194, 160);
 
     & img[alt="logo"] {
         width: 5rem;
@@ -41,3 +42,4 @@ img {
 :is(h2, footer p) {
     text-align: center;
 }
+

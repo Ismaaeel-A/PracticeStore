@@ -1,5 +1,9 @@
 //Create products and store it on the local storage
+
+
+
 let wrapper = document.querySelector('[recentProducts]')
+
 let products = JSON.parse(localStorage.getItem('products')) ?
     JSON.parse(localStorage.getItem('products')) :
     localStorage.setItem('products',
@@ -73,23 +77,35 @@ let products = JSON.parse(localStorage.getItem('products')) ?
         )
     )
 
+//Current year    
+document.querySelector('[currentYear]').textContent = new Date().getUTCFullYear()
+
 function recentProducts() {
-    let arrSize = products.length
-    let latestProducts = products.reverse().slice(0, arrSize >> 1)
-    latestProducts.forEach(product => {
-        console.log(product);
-        wrapper.innerHTML +=
+
+    try {
+        let arrSize = products.length
+        let latestProducts = products.reverse().slice(0, arrSize >> 1)
+        latestProducts.forEach(product => {
+            console.log(product);
+            wrapper.innerHTML +=
+                `
+                <div class="card" style="width: 18rem;">
+                     <img src="${product.img_url}" class="card-img-top" alt="${product.ProductName}">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.ProductName}</h5>
+                            <p class="card-text">${product.description}</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                </div>
             `
-            <div class="card" style="width: 18rem;">
-                 <img src="${product.img_url}" class="card-img-top" alt="${product.ProductName}">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.ProductName}</h5>
-                        <p class="card-text">${product.description}</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-            </div>
-        `
-    });
+        });
+    } catch (e) {
+        wrapper.textContent = "Please contact our support team"
+        setTimeout(() => {
+            location.reload()
+        }, 2000)
+    }
+
 }
 
 recentProducts()
